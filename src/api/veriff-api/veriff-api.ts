@@ -1,45 +1,23 @@
 import client from './client';
 import type { MediaContext, Session, SessionMedia } from './types';
 
-export const getSessionBySessionId = async (
+export const getSessionBySessionId = async <T extends Session>(
   sessionId: string,
-): Promise<Session> => {
-  try {
-    const { data } = await client.get<Session>(`/sessions/${sessionId}`);
-    return data;
-  } catch (error) {
-    // Monitor this log in Datadog
-    console.error(error);
-    throw error;
-  }
+): Promise<T> => {
+  const { data } = await client.get<T>(`/sessions/${sessionId}`);
+  return data;
 };
 
-export const getSessionMediaBySessionId = async (
+export const getSessionMediaBySessionId = async <T extends SessionMedia>(
   sessionId: string,
-): Promise<SessionMedia> => {
-  try {
-    const { data } = await client.get<SessionMedia>(
-      `/sessions/${sessionId}/media`,
-    );
-    return data;
-  } catch (error) {
-    // Monitor this log in Datadog
-    console.error(error);
-    throw error;
-  }
+): Promise<T> => {
+  const { data } = await client.get<T>(`/sessions/${sessionId}/media`);
+  return data;
 };
 
-export const getMediaContextBySessionId = async (
+export const getMediaContextBySessionId = async <T extends MediaContext>(
   sessionId: string,
-): Promise<MediaContext> => {
-  try {
-    const { data } = await client.get<MediaContext>(
-      `/media-context/${sessionId}`,
-    );
-    return data;
-  } catch (error) {
-    // Monitor this log in Datadog
-    console.error(error);
-    throw error;
-  }
+): Promise<T> => {
+  const { data } = await client.get<T>(`/media-context/${sessionId}`);
+  return data;
 };
