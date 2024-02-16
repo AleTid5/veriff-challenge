@@ -1,17 +1,11 @@
 import express from 'express';
 import './externalService';
+import sessionRoutes from './routes/session-routes';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3001;
 
-app.get('/api/sessions/:sessionId', async (req, res) => {
-  try {
-    return res.status(501).json();
-  } catch (error: any) {
-    console.error('Error happened', error);
-    return res.status(error.response.status).json({ message: error.response.data });
-  }
-});
+app.use('/', sessionRoutes);
 
 app.listen(port, () => {
   console.info(`Service is listening at http://localhost:${port}`);
