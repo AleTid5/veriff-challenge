@@ -7,9 +7,8 @@ export const getSession = async (req: Request, res: Response) => {
     console.log(response);
     return res.status(501).json();
   } catch (error: any) {
+    // Log error in some monitoring service (e.g. Datadog, Sentry, etc.)
     console.error('Error happened', error);
-    return res
-      .status(error.response.status)
-      .json({ message: error.response.data });
+    return res.status(error.response.status).json({ message: error.message });
   }
 };
