@@ -1,5 +1,5 @@
 import client from './client';
-import type { MediaContext, Session, SessionMedia } from './types';
+import type { MediaContext, Session, SessionMedia } from '@/types/session-type';
 
 export const getSessionBySessionId = async <T extends Session>(
   sessionId: string,
@@ -8,14 +8,14 @@ export const getSessionBySessionId = async <T extends Session>(
   return data;
 };
 
-export const getSessionMediaBySessionId = async <T extends SessionMedia>(
+export const getSessionMediaBySessionId = async <T extends SessionMedia[]>(
   sessionId: string,
 ): Promise<T> => {
   const { data } = await client.get<T>(`/sessions/${sessionId}/media`);
   return data;
 };
 
-export const getMediaContextBySessionId = async <T extends MediaContext>(
+export const getMediaContextBySessionId = async <T extends MediaContext[]>(
   sessionId: string,
 ): Promise<T> => {
   const { data } = await client.get<T>(`/media-context/${sessionId}`);
