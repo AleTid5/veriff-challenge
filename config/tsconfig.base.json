@@ -8,6 +8,10 @@
     "strict": true,
     "outDir": "../dist",
     "sourceMap": true,
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": "../src",
+    "paths": {
+      "@/*": ["../src/*"]
+    }
   }
 }

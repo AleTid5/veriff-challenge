@@ -1,6 +1,7 @@
-import { sessionService } from '../../services';
+import type { Request, Response } from 'express';
+import { sessionService } from '@/services';
 
-export const getSession = async (req, res) => {
+export const getSession = async (req: Request, res: Response) => {
   try {
     const response = await sessionService.findSessionId(req.params.sessionId);
     console.log(response);

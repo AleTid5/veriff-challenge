@@ -1,4 +1,4 @@
-import VeriffApi from '../../api/veriff-api';
+import VeriffApi from '@/api/veriff-api';
 
 export const findSessionId = async (sessionId: string) => {
   try {

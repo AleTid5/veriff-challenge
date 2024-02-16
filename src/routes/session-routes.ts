@@ -1,5 +1,5 @@
 import express from 'express';
-import { sessionController } from '../controllers';
+import { sessionController } from '@/controllers';
 
 const app = express();
 

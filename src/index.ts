@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import express from 'express';
 import './externalService';
 import sessionRoutes from './routes/session-routes';
