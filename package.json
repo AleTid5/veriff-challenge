@@ -5,7 +5,9 @@
     "main": "dist/index.js",
     "scripts": {
         "test": "jest --watch --config ./config/jest.json",
-        "start": "tsc-watch -p ./config/tsconfig.json --onSuccess \"node dist/index.js\""
+        "build": "tsc --build ./config/tsconfig.json",
+        "start": "tsc-watch -p ./config/tsconfig.json --onSuccess \"node dist/index.js\"",
+        "start:prod": "node dist/index.js"
     },
     "repository": {
         "type": "git"
