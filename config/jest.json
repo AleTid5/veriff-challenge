@@ -1,14 +1,15 @@
 {
-  "rootDir": "../",
-  "globals": {
-    "ts-jest": {
-      "tsconfig": "./config/tsconfig.test.json"
+    "rootDir": "../",
+    "globals": {
+        "ts-jest": {
+            "tsconfig": "./config/tsconfig.test.json"
+        }
+    },
+    "transform": {
+        "^.+\\.(ts)$": "ts-jest"
+    },
+    "testMatch": ["**/test/**/*.spec.(ts|js)"],
+    "moduleNameMapper": {
+        "^@/(.*)$": "<rootDir>/src/$1"
     }
-  },
-  "transform": {
-    "^.+\\.(ts)$": "ts-jest"
-  },
-  "testMatch": [
-    "**/test/**/*.spec.(ts|js)"
-  ]
 }
