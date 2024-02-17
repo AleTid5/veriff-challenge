@@ -6,6 +6,8 @@ criticality: 'none'
 type: 'candidate test task'
 ---
 
+> Quick online test: https://veriff-api.onrender.com/api/sessions/90d61876-b99a-443e-994c-ba882c8558b6
+
 <div id="top"></div>
 
 <details>
