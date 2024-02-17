@@ -3,8 +3,9 @@ import { MediaGroup } from './types';
 import { ContextDictionary, EXPECTED_CONTEXTS } from './constants';
 
 /**
- * Finds the media context for each session and groups them by context,
- * filtering out any media that doesn't have an expected context.
+ * Groups the media context by the detected context and
+ * filters out any media that doesn't have an expected context.
+ * The session context is ignored.
  * @param sessionMedia
  * @param mediaContext
  */
@@ -14,16 +15,15 @@ export const groupMedia = (
 ): MediaGroup => {
   return mediaContext.reduce(
     (acc, { context, mediaId, probability }) => {
-      const { id, mimeType } = sessionMedia.find(({ id }) => id === mediaId)!;
+      const media = sessionMedia.find(({ id }) => id === mediaId);
 
-      if (!EXPECTED_CONTEXTS.includes(context)) return acc;
+      if (!media || !EXPECTED_CONTEXTS.includes(context)) return acc;
 
       const contextKey = ContextDictionary[context];
 
       acc[contextKey].push({
-        id,
-        mimeType,
-        context: contextKey,
+        id: media.id,
+        mimeType: media.mimeType,
         probability,
       });
 
@@ -33,6 +33,10 @@ export const groupMedia = (
   );
 };
 
+/**
+ * Sorts the media by probability in descending order.
+ * @param groupedMedia
+ */
 export const sortByProbability = (groupedMedia: MediaGroup): MediaGroup => {
   return Object.keys(groupedMedia).reduce(
     (acc, context) => {
