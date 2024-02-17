@@ -1,5 +1,5 @@
-import { MediaContext, SessionMedia } from '@/types/session-type';
-import { MediaGroup } from './types';
+import type { MediaContext, SessionMedia } from '@/types/session-type';
+import type { MediaGroup } from './types';
 import { ContextDictionary, EXPECTED_CONTEXTS } from './constants';
 
 /**

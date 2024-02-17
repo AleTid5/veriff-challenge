@@ -4,10 +4,6 @@ import sessionValidator from '@/middlewares/session-validator';
 
 const app = express();
 
-app.get(
-  '/api/sessions/:sessionId',
-  sessionValidator,
-  sessionController.getSession,
-);
+app.get('/sessions/:sessionId', sessionValidator, sessionController.getSession);
 
 export default app;
